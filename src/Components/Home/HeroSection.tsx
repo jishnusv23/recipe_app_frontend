@@ -11,7 +11,7 @@ const HeroSection = () => {
           <h1 className="text-6xl py-5 text-red-700">Welcome Back</h1>
         </div>
       </div>
-      <div className=" h-[calc(100vh-2.5rem)] overflow-y-auto scrollbar-hide ">
+      <div className=" h-[calc(100vh-2.5rem)] overflow-y-auto scrollbar-hide p-10 ">
         <TodayTrending />
       </div>
     </div>

@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
 import { SignupinitailValues } from "../../types/SingupType";
 import { SignUpValidation } from "../../utils/validation/SignupValication";
+import GoogleAuth from "./GoogleAuth";
 
 const SingupForm = () => {
   const handleSubmit = (values: any) => {
@@ -74,6 +75,7 @@ const SingupForm = () => {
             </Form>
           </Formik>
         </div>
+        <GoogleAuth/>
       </div>
     </div>
   );

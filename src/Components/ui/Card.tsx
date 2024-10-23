@@ -21,9 +21,9 @@ const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
 }) => {
   const handleResponse = () => {
     console.log("first");
-   toast("Explore new recipes!", {
-     icon: "🍻",
-   });
+    toast("Explore new recipes!", {
+      icon: "🍻",
+    });
   };
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -44,6 +44,7 @@ const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
         >
           <FavoriteBorderIcon />
         </Button>
+        <Button size="small"> Details</Button>
         <Button size="small"> More</Button>
       </CardActions>
     </Card>
