@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ImgMediaCard from "../ui/Card";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 interface AllRecipieProps {
   searchQuery: string;
@@ -24,7 +25,7 @@ const AllRecipie: React.FC<AllRecipieProps> = ({
             params: {
               apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY,
               query: searchQuery,
-              number: resultsPerPage,
+              number: 12,
               offset: offset,
             },
           }
@@ -51,10 +52,25 @@ const AllRecipie: React.FC<AllRecipieProps> = ({
               key={recipe.id}
               title={recipe.title}
               image={recipe.image}
+              productId={recipe.id}
             />
           ))
         ) : (
-          <h1>hey</h1>
+          <div className="fixed inset-0 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              <Player
+                src="https://lottie.host/4e2fb4b6-1136-4e34-8386-664838d675e2/jOnHGsa3uB.json"
+                background="transparent"
+                speed={1}
+                loop
+                autoplay
+                className="w-80 mb-4" // Margin bottom for spacing
+              />
+              <h1 className="font-black text-4xl">
+                Appi is Not Getting Explore Another Website
+              </h1>
+            </div>
+          </div>
         )}
       </div>
     </div>

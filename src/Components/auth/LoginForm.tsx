@@ -1,10 +1,30 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { initialValues } from "../../types/Login";
 import { LoginValidation } from "../../utils/validation/LoginValidation";
+import { useAppDispatch } from "../../hooks/hooks";
+import { LoginAction } from "../../redux/actions/auth/LoginAction";
+import { useNavigate } from "react-router-dom";
+import GoogleAuth from "./GoogleAuth";
+import toast from "react-hot-toast";
 
 const LoginForm = () => {
-  const handleSubmit = (values: any) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const handleSubmit = async (values: any) => {
     console.log("Form submitted with values:", values);
+    try {
+      const response = await dispatch(LoginAction(values));
+      console.log(
+        "🚀 ~ file: LoginForm.tsx:13 ~ handleSubmit ~ response:",
+        response
+      );
+      if(!response.payload.success){
+        toast.error(response.payload.message)
+      }
+
+    } catch (error: any) {
+      console.error("Something wrong in Login Form component", error);
+    }
   };
 
   return (
@@ -51,9 +71,10 @@ const LoginForm = () => {
             </Form>
           </Formik>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end" onClick={() => navigate("/signup")}>
           <h1 className="text-xl underline hover:text-blue-400">signup</h1>
         </div>
+        <GoogleAuth />
       </div>
     </div>
   );

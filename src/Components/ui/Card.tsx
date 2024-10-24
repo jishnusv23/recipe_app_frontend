@@ -7,23 +7,45 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux";
+import { useAppDispatch } from "../../hooks/hooks";
+import { AddWishlistAction } from "../../redux/actions/user/AddWishlist";
 
 interface ImgMediaCardProps {
   title: string;
   image: string;
+  productId: string;
   //   description: string;
 }
 
 const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
   title,
   image,
+  productId,
   //   description,
 }) => {
-  const handleResponse = () => {
-    console.log("first");
-    toast("Explore new recipes!", {
-      icon: "🍻",
-    });
+  const { data } = useSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
+  const handleResponse = async () => {
+    if (data) {
+      console.log("first");
+      console.log(productId, "-----------------------------");
+      const response=await dispatch(
+        AddWishlistAction({
+          userId: data.id as string,
+          productId: productId as string,
+        })
+      );
+      console.log("🚀 ~ file: Card.tsx:40 ~ handleResponse ~ resons:", response)
+      if(response.payload.message){
+        toast.success(response.payload.message)
+      }
+    } else {
+      toast("Explore new recipes! After Login", {
+        icon: "🍻",
+      });
+    }
   };
   return (
     <Card sx={{ maxWidth: 345 }}>

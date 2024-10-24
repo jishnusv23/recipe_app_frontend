@@ -1,12 +1,38 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import React from "react";
-import { SignupinitailValues } from "../../types/SingupType";
+import { SignupinitailValues } from "../../types/SignupType";
 import { SignUpValidation } from "../../utils/validation/SignupValication";
 import GoogleAuth from "./GoogleAuth";
+import { useAppDispatch } from "../../hooks/hooks";
+import { SignupAction } from "../../redux/actions/auth/SignupAction";
+import { LoginAction } from "../../redux/actions/auth/LoginAction";
+import toast from "react-hot-toast";
+import { storeUserData } from "../../redux/slice/userSlice";
 
 const SingupForm = () => {
-  const handleSubmit = (values: any) => {
+  const dispatch = useAppDispatch();
+  const handleSubmit = async (values: any) => {
     console.log("Form submitted with values:", values);
+    try {
+      const allData = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
+
+      const response = await dispatch(SignupAction(allData));
+      console.log(
+        "🚀 ~ file: SingupForm.tsx:15 ~ handleSubmit ~ response:",
+        response
+      );
+      if (!response.payload.success) {
+        toast.error("Please Login");
+      }else{
+        dispatch(storeUserData(response.payload.data))
+      }
+    } catch (error: any) {
+      console.error("Something wrong in signup Form ", error);
+    }
   };
   return (
     <div>
@@ -75,7 +101,7 @@ const SingupForm = () => {
             </Form>
           </Formik>
         </div>
-        <GoogleAuth/>
+        <GoogleAuth />
       </div>
     </div>
   );
