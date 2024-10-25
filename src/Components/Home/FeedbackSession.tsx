@@ -1,4 +1,4 @@
-import React from "react";
+
 import RandomUsers from "../ui/RandomUsers";
 
 const FeedbackSession = () => {

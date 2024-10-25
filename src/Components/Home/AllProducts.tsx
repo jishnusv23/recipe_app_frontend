@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AllRecipie from "../spoonacular/AllRecipie";
 import Header from "../common/Header";
 import { CiSearch } from "react-icons/ci";

@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { SignupAction } from "../actions/auth/SignupAction";
+
 import { SignupForm } from "../../types/IForm";
 import { LoginAction } from "../actions/auth/LoginAction";
 import { getUserData } from "../actions/auth/getUserData";
+import { logoutAction } from "../actions/auth/LogoutAction";
 
 export interface UserState {
   loading: boolean;
@@ -67,6 +68,17 @@ const userSlice = createSlice({
         } else {
           state.error = "Failed to load user data";
         }
+      })
+      .addCase(logoutAction.pending, (state: UserState) => {
+        (state.loading = true), (state.error = null);
+      })
+      .addCase(logoutAction.rejected, (state: UserState, action) => {
+        (state.loading = false), (state.data = null);
+        state.error = action.error.message || "Logout Failed";
+      })
+      .addCase(logoutAction.fulfilled, (state: UserState) => {
+        (state.loading = false), (state.data = null);
+        state.error = null;
       });
   },
 });

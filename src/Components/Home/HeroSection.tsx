@@ -1,4 +1,4 @@
-import React from "react";
+
 import IMG from "../../assets/home/Simply-Recipes-City-Chicken-LEAD-1-47cad2a554a64570ae8cca402072d6b4.webp";
 import TodayTrending from "../spoonacular/TodayTrending";
 const HeroSection = () => {

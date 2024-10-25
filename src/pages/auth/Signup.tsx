@@ -1,5 +1,5 @@
-import React from "react";
-import SingupForm from "../../Components/auth/SingupForm";
+
+import SingupForm from "../../Components/auth/SignupForm";
 import Header from "../../Components/common/Header";
 import IMG from "../../assets/auth/chef-cooking-with-flair-hotel-restaurant-kitchen_1101231-9130.jpg";
 

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import ImgMediaCard from "../ui/Card";
-import { Recipe } from "../../types/TrendingRecipeTypes";
+// import { Recipe } from "../../types/TrendingRecipeTypes";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 const TodayTrending = () => {
@@ -16,7 +16,7 @@ const TodayTrending = () => {
           {
             params: {
               apiKey: import.meta.env.VITE_SPOONACULAR_API_KEY,
-              number: 4,
+              number: 8,
             },
           }
         );

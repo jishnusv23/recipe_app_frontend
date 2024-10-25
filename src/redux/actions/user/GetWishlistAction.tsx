@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { CLIENT_API } from "../../../utils/axios";
-import { config } from "../../../common/services/configuration";
+
 
 export const GetWishlistAction=createAsyncThunk(
     'user/getWishlist',
