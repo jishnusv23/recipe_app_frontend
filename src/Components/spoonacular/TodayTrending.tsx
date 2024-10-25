@@ -62,7 +62,10 @@ const TodayTrending = () => {
                 autoplay
                 className="w-80 mb-4"
               />
-              <h1 className="font-black text-4xl">Api is Not Getting</h1>
+              <h1 className="font-black text-4xl text-red-600">
+                {" "}
+                Oops!. Please try again later.
+              </h1>
             </div>
           </div>
         )}

@@ -21,6 +21,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "./hooks/hooks";
 import { getUserData } from "./redux/actions/auth/getUserData";
 import Wishlist from "./pages/common/Wishlist";
+import Details from "./Components/spoonacular/Details";
 
 function App() {
   const {data}=useSelector((state:RootState)=>state.user)
@@ -54,6 +55,10 @@ function App() {
           <Route
             path="/profile"
             element={data ? <Wishlist /> : <Navigate to="/" />}
+          />
+          <Route
+            path="/productDetail/:id"
+            element={ <Details/> }
           />
         </Routes>
       </Router>

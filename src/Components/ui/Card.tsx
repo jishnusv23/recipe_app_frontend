@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux";
 import { useAppDispatch } from "../../hooks/hooks";
 import { AddWishlistAction } from "../../redux/actions/user/AddWishlist";
+import { useNavigate } from "react-router-dom";
 
 interface ImgMediaCardProps {
   title: string;
@@ -27,6 +28,7 @@ const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
 }) => {
   const { data } = useSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
+  const navigate=useNavigate()
   const handleResponse = async () => {
     if (data) {
       console.log("first");
@@ -47,6 +49,9 @@ const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
       });
     }
   };
+  const handleDetailsPage=()=>{
+    navigate(`/productDetail/${productId}`)
+  }
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component="img" alt={title} height="140" image={image} />
@@ -66,7 +71,7 @@ const ImgMediaCard: React.FC<ImgMediaCardProps> = ({
         >
           <FavoriteBorderIcon />
         </Button>
-        <Button size="small"> Details</Button>
+        <Button size="small" onClick={handleDetailsPage}> Details</Button>
         <Button size="small"> More</Button>
       </CardActions>
     </Card>

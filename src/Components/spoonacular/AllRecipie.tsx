@@ -64,10 +64,12 @@ const AllRecipie: React.FC<AllRecipieProps> = ({
                 speed={1}
                 loop
                 autoplay
-                className="w-80 mb-4" // Margin bottom for spacing
+                className="w-80 mb-4" 
               />
-              <h1 className="font-black text-4xl">
-                Appi is Not Getting Explore Another Website
+              <h1 className="font-black flex items-center justify-center text-4xl text-red-600">
+                Oops!
+                <br />
+                Please try again later.
               </h1>
             </div>
           </div>

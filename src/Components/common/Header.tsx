@@ -4,19 +4,20 @@ import { RootState } from "../../redux";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { logoutAction } from "../../redux/actions/auth/LogoutAction";
+import { IoMdLogOut } from "react-icons/io";
 
 const Header = () => {
   const navigate = useNavigate();
   const { data } = useAppSelector((state: RootState) => state.user);
-  const dispatch=useAppDispatch()
+  const dispatch = useAppDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  const handleLogut=async()=>{
-    await dispatch(logoutAction())
-  }
+  const handleLogut = async () => {
+    await dispatch(logoutAction());
+  };
   return (
     <div className="flex justify-between lg:px-40 py-3 bg-white shadow-md fixed w-full z-50">
       <div className="flex justify-start">
@@ -122,10 +123,10 @@ const Header = () => {
               Profile
             </div>
             <div
-              className="font-bold text-xl text-red-600"
+              className="font-bold  text-red-600 text-3xl"
               onClick={handleLogut}
             >
-              Logout
+              <IoMdLogOut />
             </div>
             <div className="font-bold text-xl text-green-600">
               {" "}
