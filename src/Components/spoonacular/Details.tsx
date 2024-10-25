@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Header from "../common/Header";
 import { IoCaretBackCircle } from "react-icons/io5";
+
 const Details = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState<any>(null);
@@ -40,7 +41,9 @@ const Details = () => {
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="flex justify-center font-black text-2xl">{error}</div>
+    );
   }
 
   if (!productDetails) {
@@ -54,16 +57,20 @@ const Details = () => {
   return (
     <>
       <Header />
-      <div className="pt-20">
+      <div className="pt-20 px-4 sm:px-6 lg:px-8">
         <button className="pl-10 text-4xl" onClick={() => navigate(-1)}>
           <IoCaretBackCircle />
         </button>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-5">
           <h1 className="font-black text-3xl">Details of the Product</h1>
         </div>
-        <div className="flex justify-center">
-          <img src={productDetails.image} alt="" width={300} height={300} />
-          <div className="ml-5">
+        <div className="flex flex-col md:flex-row justify-center items-center mt-5">
+          <img
+            src={productDetails.image}
+            alt={productDetails.title}
+            className="w-full max-w-xs rounded-lg shadow-lg"
+          />
+          <div className="ml-0 md:ml-5 mt-5 md:mt-0 text-left">
             <p>
               <strong>Aggregate Likes:</strong> {productDetails.aggregateLikes}
             </p>
@@ -87,6 +94,7 @@ const Details = () => {
                 href={productDetails.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="text-blue-500 underline"
               >
                 {productDetails.sourceName}
               </a>
