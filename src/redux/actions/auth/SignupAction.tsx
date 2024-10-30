@@ -6,7 +6,7 @@ export const SignupAction = createAsyncThunk(
     'user/signup',
     async(data:any,{rejectWithValue})=>{
         try{
-            const response = await CLIENT_API.post(`/api/users`,data,config);
+            const response = await CLIENT_API.post(`/api/users`, data, config);
             
             console.log("🚀 ~ file: SignupAction.tsx:11 ~ async ~ response:", response)
             if(response.data){

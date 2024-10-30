@@ -65,7 +65,7 @@ const WishlistProduct = () => {
       }
     };
     fetwishlist();
-  }, []);
+  }, [data?.id,dispatch]);
   return (
     <>
       <div>

@@ -24,12 +24,12 @@ import Wishlist from "./pages/common/Wishlist";
 import Details from "./Components/spoonacular/Details";
 
 function App() {
-  const {data}=useSelector((state:RootState)=>state.user)
-  const dispatch=useAppDispatch()
+  const { data } = useSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
   useEffect(() => {
     if (!data) {
       dispatch(getUserData());
-    } 
+    }
   }, [data, dispatch]);
   return (
     <>
@@ -56,10 +56,7 @@ function App() {
             path="/profile"
             element={data ? <Wishlist /> : <Navigate to="/" />}
           />
-          <Route
-            path="/productDetail/:id"
-            element={ <Details/> }
-          />
+          <Route path="/productDetail/:id" element={<Details />} />
         </Routes>
       </Router>
     </>
